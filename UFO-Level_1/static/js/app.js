@@ -15,7 +15,7 @@ form.on("submit", runEvent);
 function createTable(filteredData){
     
     // Select the table element by id
-    var table = d3.select("#ufo-table");
+    var table = d3.select("ufo-table");
 
     // Select the tbody element by id 
     var tbody = table.select("tbody");
@@ -52,6 +52,9 @@ function runEvent(){
     // Get the input value (date) from the input element
     var inputData = inputElement.property("value");
 
+    //Check for input data
+        if(inputData == "") {inputData = tableData[0].datetime;}
+
     // Filter the data.js by the input value
     var filteredData = tableData.filter(sighting => sighting.datetime === inputData);
 
@@ -59,3 +62,4 @@ function runEvent(){
     // filteredData as the parameter
     createTable(filteredData);
 };
+runEvent();
