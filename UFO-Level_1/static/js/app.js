@@ -15,7 +15,7 @@ form.on("submit", runEvent);
 function createTable(filteredData){
     
     // Select the table element by id
-    var table = d3.select("ufo-table");
+    var table = d3.select("#ufo-table");
 
     // Select the tbody element by id 
     var tbody = table.select("tbody");
@@ -30,7 +30,7 @@ function createTable(filteredData){
         trow = tbody.append("tr");
         trow.append("td").text(dataObject.datetime);
         trow.append("td").text(dataObject.city);
-        trow.append("td").text(dataObject.state);
+        trow.append("td").text(dataObject.ctate);
         trow.append("td").text(dataObject.country);
         trow.append("td").text(dataObject.shape);
         trow.append("td").text(dataObject.durationMinutes);
@@ -44,7 +44,7 @@ function createTable(filteredData){
 function runEvent(){
 
     // Prevent Page from Refreshing
-    d3.event.preventDefault();
+    //d3.event.preventDefault();
 
     // Select the input element and get the raw HTML node
     var inputElement = d3.select("#datetime");
@@ -53,7 +53,7 @@ function runEvent(){
     var inputData = inputElement.property("value");
 
     //Check for input data
-        if(inputData == "") {inputData = tableData[0].datetime;}
+        if (inputData == "") {inputData = tableData[0].datetime;}
 
     // Filter the data.js by the input value
     var filteredData = tableData.filter(sighting => sighting.datetime === inputData);
